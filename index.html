@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Specialty Coffee & Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="theme-dark">
+<!-- واجهة البداية السينمائية ثلاثية الأبعاد -->
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-glow"></div>
+        <div class="intro-content">
+            <!-- مسرح العناصر الثلاثية الأبعاد (فنجان + كراميل + بن متطاير) -->
+       <!-- مسرح الفنجان والطرطشة والبن المفرغ -->
+          <!-- مسرح الفنجان الفخم والبسيط -->
+            <div class="hero-art-stage">
+                <!-- توهج خلفي -->
+                <div class="intro-glow"></div>
+                
+                <!-- حلقة ذهبية ناعمة -->
+                <div class="gold-ring"></div>
+                
+                <!-- الكاسة الفخمة الجديدة ذات الطبقات وزاوية التصوير السينمائية -->
+<img src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?w=800&q=80" alt="Luxury Signature Coffee" class="cup-layer">                <div class="cup-shadow"></div>
+            </div>
+            <p class="intro-subtitle animate-item-1">WELCOME TO THE ART OF LUXURY</p>
+            <h1 class="intro-title animate-item-2">AURA COFFEE</h1>
+            <p class="intro-text animate-item-3">A sensory journey of roasted perfection, rich caramel & pure passion.</p>
+            <button class="intro-btn animate-item-4" onclick="startAppExperience()">
+                <span>Enter Experience</span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+        </div>
+    </div>
+    <!-- شريط التنقل العلوي -->
+    <nav class="navbar">
+        <div class="logo">AURA<span>.</span></div>
+        <div class="nav-actions">
+            <!-- بروفايل المستخدم السريع -->
+            <div class="user-chip" id="user-chip" onclick="toggleModal('profile-modal')">
+                <img id="nav-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+                <span id="nav-username">Guest</span>
+            </div>
+            <!-- زر الإعدادات والثيم -->
+            <button class="icon-btn" onclick="toggleModal('settings-modal')"><i class="fa-solid fa-sliders"></i></button>
+            <!-- زر بوابة الإدارة -->
+            <button class="icon-btn admin-badge" onclick="openAdminPortal()"><i class="fa-solid fa-shield-halved"></i> Admin</button>
+            <!-- زر السلة -->
+            <button class="cart-icon-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- واجهة المتجر الرئيسية -->
+    <div id="store-view">
+        <header class="hero">
+            <p class="tagline">WORLD CLASS ROASTERY</p>
+            <h1>Select Your Taste</h1>
+        </header>
+
+        <main class="menu-container">
+            <!-- أزرار التصنيف الفخمة -->
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="filterCategory('hot')"><i class="fa-solid fa-mug-hot"></i> Hot Drinks</button>
+                <button class="tab-btn" onclick="filterCategory('cold')"><i class="fa-solid fa-snowflake"></i> Cold Drinks</button>
+                <button class="tab-btn" onclick="filterCategory('bites')"><i class="fa-solid fa-cookie-bite"></i> Sweet Bites</button>
+            </div>
+
+            <div class="coffee-grid" id="coffee-grid"></div>
+        </main>
+    </div>
+
+    <!-- نافذة تخصيص الطلب -->
+    <div id="customize-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="close-btn" onclick="toggleModal('customize-modal')">&times;</button>
+            <h2 id="modal-title">Customize Coffee</h2>
+            <p id="modal-desc"></p>
+            
+            <div class="option-section">
+                <label class="option-title">Size</label>
+                <div class="size-selector">
+                    <input type="radio" name="coffee-size" id="size-s" value="Small">
+                    <label for="size-s">Small</label>
+                    <input type="radio" name="coffee-size" id="size-m" value="Medium" checked>
+                    <label for="size-m">Medium</label>
+                    <input type="radio" name="coffee-size" id="size-l" value="Large">
+                    <label for="size-l">Large</label>
+                </div>
+            </div>
+
+            <div class="option-section">
+                <label class="option-title">Milk Option</label>
+                <select id="milk-select" class="dropdown">
+                    <option value="Full Cream" data-price="0">Full Cream Milk</option>
+                    <option value="Skimmed" data-price="0">Skimmed Milk (Fat-Free)</option>
+                    <option value="Oat Milk" data-price="0.80">Oat Milk (+ $0.80)</option>
+                    <option value="Almond Milk" data-price="0.80">Almond Milk (+ $0.80)</option>
+                    <option value="None" data-price="0">No Milk (Black)</option>
+                </select>
+            </div>
+
+            <div class="option-section">
+                <label class="option-title">Sugar Level</label>
+                <select id="sugar-select" class="dropdown">
+                    <option value="No Sugar">Without Sugar</option>
+                    <option value="Light Sugar">Light (1 Spoon)</option>
+                    <option value="Medium Sugar">Medium (2 Spoons)</option>
+                    <option value="Extra Sugar">Extra (3 Spoons)</option>
+                </select>
+            </div>
+
+            <div class="option-section">
+                <label class="option-title">Add-ons</label>
+                <div class="checkboxes">
+                    <label><input type="checkbox" id="ex-shot" data-price="1.00"> Extra Espresso Shot (+ $1.00)</label>
+                    <label><input type="checkbox" id="ex-caramel" data-price="0.60"> Caramel Drizzle (+ $0.60)</label>
+                    <label><input type="checkbox" id="ex-vanilla" data-price="0.60"> Vanilla Syrup (+ $0.60)</label>
+                    <label><input type="checkbox" id="ex-cream" data-price="0.75"> Whipped Cream (+ $0.75)</label>
+                </div>
+            </div>
+
+            <button id="confirm-add-btn" class="gold-btn">Add to Bag - $0.00</button>
+        </div>
+    </div>
+
+    <!-- نافذة تعديل البروفايل والمعلومات الشخصية -->
+    <div id="profile-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="close-btn" onclick="toggleModal('profile-modal')">&times;</button>
+            <h2>Customer Profile</h2>
+            <form id="profile-form">
+                <div class="avatar-upload">
+                    <img id="profile-preview" src="https://via.placeholder.com/100" alt="Preview">
+                    <input type="file" id="avatar-input" accept="image/*">
+                </div>
+                <div class="input-box">
+                    <label>Full Name</label>
+                    <input type="text" id="cust-name" required>
+                </div>
+                <div class="input-box">
+                    <label>WhatsApp Phone (with Country Code)</label>
+                    <input type="tel" id="cust-phone" placeholder="e.g. +9639xxxxxxxx" required>
+                </div>
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" id="cust-email" required>
+                </div>
+                <button type="submit" class="gold-btn">Save Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة الإعدادات والثيمات -->
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="close-btn" onclick="toggleModal('settings-modal')">&times;</button>
+            <h2>Settings & Preferences</h2>
+            <div class="option-section">
+                <label class="option-title">Store Theme</label>
+                <select id="theme-select" class="dropdown" onchange="changeTheme(this.value)">
+                    <option value="theme-dark">Deep Espresso (Dark)</option>
+                    <option value="theme-gold">Golden Roastery (Luxury)</option>
+                    <option value="theme-light">Cream Latte (Light)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- بوابة دخول المدير الشاملة -->
+    <div id="admin-auth-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="close-btn" onclick="toggleModal('admin-auth-modal')">&times;</button>
+            <h2>Admin Portal Access ☕</h2>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Enter your store license key and personal details</p>
+            <form id="admin-login-form">
+                <div class="input-box">
+                    <label>Master License Key (كلمة سر ترخيص الموقع)</label>
+                    <input type="password" id="admin-license-key" placeholder="Enter System Master Key" required>
+                </div>
+                <div class="input-box">
+                    <label>Manager Name (اسم المدير)</label>
+                    <input type="text" id="admin-name" placeholder="e.g. Ahmad" required>
+                </div>
+                <div class="input-box">
+                    <label>National ID (الرقم الوطني)</label>
+                    <input type="text" id="admin-nid" placeholder="11-digit National ID" required>
+                </div>
+                <div class="input-box">
+                    <label>Official Email (الإيميل)</label>
+                    <input type="email" id="admin-email" placeholder="manager@shop.com" required>
+                </div>
+                <div class="input-box">
+                    <label>Email Password (كلمة سر الإيميل)</label>
+                    <input type="password" id="admin-email-pass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="gold-btn">Authorize Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- داشبورد المدير -->
+    <div id="admin-view" class="admin-container hidden">
+        <div class="admin-header">
+            <h2>Store Management System</h2>
+            <button class="gold-btn btn-sm" onclick="exitAdmin()">Back to Store</button>
+        </div>
+        <div class="table-wrapper">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Customer</th>
+                        <th>WhatsApp Phone</th>
+                        <th>Email</th>
+                        <th>Full Order Details</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-table-body">
+                    <!-- الطلبات تظهر هنا ديناميكياً -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- سلة المشتريات والطلب عبر الواتساب -->
+    <div id="cart-drawer" class="cart-drawer hidden">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button class="close-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button class="gold-btn" onclick="checkoutWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Send via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
