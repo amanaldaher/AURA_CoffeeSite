@@ -11,7 +11,7 @@ const fullCoffeeMenu = [
     { id: 2, category: "hot", name: "Spanish Cortado", desc: "Espresso cut with an equal part of warm textured milk.", basePrice: 3.50, img: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=500&q=80" },
     { id: 3, category: "hot", name: "Velvet Flat White", desc: "Double shot espresso folded into silky microfoam.", basePrice: 4.20, img: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=500&q=80" },
     { id: 4, category: "hot", name: "Classic Cappuccino", desc: "Espresso, hot milk, and deep steamed foam blanket.", basePrice: 4.00, img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&q=80" },
-    { id: 5, category: "hot", name: "Traditional Turkish Coffee", desc: "Finely ground unfiltered coffee with dense rich foam.", basePrice: 3.00, img: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&q=80" },
+    { id: 5, category: "hot", name: "Traditional Turkish Coffee", desc: "Finely ground unfiltered coffee with dense rich foam.", basePrice: 3.00, img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80" },
 
     // --- المشروبات الباردة (Cold Drinks) ---
     { id: 6, category: "cold", name: "Iced Caramel Latte", desc: "Chilled espresso, milk, and rich caramel syrup over ice.", basePrice: 4.80, img: "https://images.unsplash.com/photo-1593443320739-77f74939d0da?w=500&q=80" },
